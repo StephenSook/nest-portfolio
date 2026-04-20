@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const stats = [
   { value: "~700", label: "GA foster youth age out of state care each year" },
@@ -76,20 +77,18 @@ export function FeaturedProject() {
         </div>
 
         <div className="flex flex-wrap items-center gap-6">
-          <a
-            href="https://nest-zeta-nine.vercel.app"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/nest"
             className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-amber-600"
           >
-            See Nest live
+            Read the case study
             <svg
               viewBox="0 0 16 16"
               aria-hidden
-              className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              className="size-4 transition-transform group-hover:translate-x-0.5"
             >
               <path
-                d="M4 12L12 4M12 4H6M12 4V10"
+                d="M3 8H13M13 8L8 3M13 8L8 13"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
@@ -97,6 +96,14 @@ export function FeaturedProject() {
                 fill="none"
               />
             </svg>
+          </Link>
+          <a
+            href="https://nest-zeta-nine.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-muted underline-offset-4 transition-colors hover:text-foreground hover:underline"
+          >
+            See Nest live
           </a>
           <a
             href="https://github.com/tylinndd/nest"
