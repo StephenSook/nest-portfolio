@@ -1,0 +1,33 @@
+# Nest
+
+> AI transition navigator for Georgia foster youth aging out of state care. Grounded retrieval over the Georgia DFCS handbook and partner-nonprofit corpora (Embark, ASCEND, Wellroot). Built by three Kennesaw State CS students — Stephen Sookra, Tylin Delaney, Brenden Bryant — for C-Day 2026.
+
+Nest replaces a 250-page handbook distributed to the ~700 foster youth who age out of Georgia state care each year. The architecture is deliberately unflashy: ChromaDB retrieval over a ~500-passage Georgia policy corpus, Llama 3.3 70B on Groq for grounded generation, deterministic keyword routing for crisis phrases (988 / 211), no hallucination, no unsourced claims.
+
+This portfolio site is the team's case study and recruiting surface. The live Nest application lives in a separate repository.
+
+## Key pages
+
+- [Home](https://nest-portfolio-pi.vercel.app/): Team introduction, project teaser, and recruiter-facing summary.
+- [Nest case study](https://nest-portfolio-pi.vercel.app/nest): Long-form walkthrough of the problem, approach, RAG architecture, outcomes, individual ownership, what we'd do differently in v2, audio deep-dive, and sources.
+
+## Source code
+
+- [Portfolio repo (this site)](https://github.com/StephenSook/nest-portfolio)
+- [Nest application (FastAPI + RAG backend)](https://github.com/tylinndd/nest)
+
+## Sources cited in the case study
+
+- Georgia Division of Family and Children Services (DFCS) — handbook and public reporting on youth aging out.
+- Chapin Hall, University of Chicago — Midwest Evaluation of the Adult Functioning of Former Foster Youth (Courtney, Dworsky et al.).
+- Casey Family Programs — post-secondary attainment data for foster care alumni.
+
+## Team
+
+- Stephen Sookra — frontend, pitch lead. https://stephensookra.com · https://github.com/StephenSook
+- Tylin Delaney — backend, RAG, FastAPI. https://tylindelaney.dev · https://github.com/tylinndd
+- Brenden Bryant — design, light coding. https://www.linkedin.com/in/brenden-bryant-422464329/
+
+## Institution
+
+Kennesaw State University · College of Computing and Software Engineering · presenting at C-Day 2026 (April 29, UC-151–197).
