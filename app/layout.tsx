@@ -47,6 +47,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
     >
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-[0.18em] focus:text-background focus:shadow-lg"
+        >
+          Skip to content
+        </a>
         <MotionProvider>
           <LenisProvider>{children}</LenisProvider>
         </MotionProvider>

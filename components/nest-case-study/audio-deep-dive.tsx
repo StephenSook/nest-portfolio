@@ -34,7 +34,12 @@ export async function AudioDeepDive() {
         </p>
 
         <div className="mt-8">
-          <audio controls preload="none" className="w-full">
+          <audio
+            controls
+            preload="none"
+            aria-label="Nest deep dive · 20-minute conversational breakdown of the project, produced April 2026"
+            className="w-full"
+          >
             <source src="/audio/nest-deep-dive.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>

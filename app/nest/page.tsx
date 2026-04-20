@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function NestCaseStudy() {
   return (
-    <main>
+    <main id="main">
       <ScrollProgress />
       <CaseHero />
       <StakesReveal />
