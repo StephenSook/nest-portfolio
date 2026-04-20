@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import "./globals.css";
@@ -49,6 +50,7 @@ export default function RootLayout({
         <MotionProvider>
           <LenisProvider>{children}</LenisProvider>
         </MotionProvider>
+        <Analytics />
       </body>
     </html>
   );
