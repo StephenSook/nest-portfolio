@@ -1,10 +1,20 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { SectionFrame } from "./section-frame";
 
-export function AudioDeepDive() {
+async function loadTranscript() {
+  const path = join(process.cwd(), "public/audio/nest-deep-dive-transcript.txt");
+  const raw = await readFile(path, "utf8");
+  return raw.split(/\n\n+/).map((p) => p.trim()).filter(Boolean);
+}
+
+export async function AudioDeepDive() {
+  const paragraphs = await loadTranscript();
+
   return (
     <SectionFrame id="listen" number="08" eyebrow="Deep dive">
       <h2 className="font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl">
-        Ten minutes on the thinking behind it.
+        Twenty minutes on the thinking behind it.
       </h2>
       <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
         A conversational breakdown of the problem, the decisions, and the trade-offs &mdash;
@@ -31,8 +41,20 @@ export function AudioDeepDive() {
         </div>
 
         <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
-          Produced April 2026
+          Produced April 2026 &middot; 20:01
         </p>
+
+        <details className="group mt-8 border-t border-white/[0.06] pt-6">
+          <summary className="flex cursor-pointer items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-foreground">
+            <span>Read the transcript</span>
+            <span className="text-accent transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <div className="mt-6 space-y-5 text-base leading-relaxed text-muted md:text-[17px]">
+            {paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </details>
       </div>
     </SectionFrame>
   );
