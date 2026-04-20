@@ -19,7 +19,6 @@ export const metadata: Metadata = {
     description:
       "How three KSU CS students replaced Georgia's 250-page foster care transition handbook with an AI navigator.",
     type: "article",
-    images: ["/projects/nest-home.png"],
   },
 };
 
