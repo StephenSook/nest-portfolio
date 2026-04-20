@@ -25,7 +25,7 @@ export const team: TeamMember[] = [
   {
     name: "Tylin Delaney",
     role: "Backend · RAG · FastAPI",
-    imageSrc: "/team/tylin.png",
+    imageSrc: "/team/tylin.jpg",
     linkedIn: "https://www.linkedin.com/in/tylin-delaney/",
     github: "https://github.com/tylinndd",
     portfolio: "https://tylindelaney.dev/",
@@ -36,7 +36,7 @@ export const team: TeamMember[] = [
   {
     name: "Brenden Bryant",
     role: "Design · Light coding",
-    imageSrc: "/team/brenden.png",
+    imageSrc: "/team/brenden.jpg",
     linkedIn: "https://www.linkedin.com/in/brenden-bryant-422464329/",
     classOf: "2028",
     summer26: "IBM",
