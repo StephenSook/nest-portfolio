@@ -25,6 +25,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nest-portfolio-pi.vercel.app"),
   title: "Nest — Three KSU students building AI for foster youth",
   description:
     "Portfolio of the Nest team. Our flagship project is an AI transition navigator for Georgia foster youth aging out of care.",
