@@ -8,6 +8,7 @@ import { ScreenGallery } from "@/components/nest-case-study/screen-gallery";
 import { ArchitectureDiagram } from "@/components/nest-case-study/architecture-diagram";
 import { StackRationale } from "@/components/nest-case-study/stack-rationale";
 import { Outcomes } from "@/components/nest-case-study/outcomes";
+import { TeamContributions } from "@/components/nest-case-study/team-contributions";
 import { AudioDeepDive } from "@/components/nest-case-study/audio-deep-dive";
 import { Sources } from "@/components/nest-case-study/sources";
 import { CaseFooter } from "@/components/nest-case-study/case-footer";
@@ -95,6 +96,7 @@ export default function NestCaseStudy() {
       <ArchitectureDiagram />
       <StackRationale />
       <Outcomes />
+      <TeamContributions />
       <AudioDeepDive />
       <Sources />
       <CaseFooter />

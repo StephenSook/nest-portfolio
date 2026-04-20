@@ -12,7 +12,7 @@ export async function AudioDeepDive() {
   const paragraphs = await loadTranscript();
 
   return (
-    <SectionFrame id="listen" number="08" eyebrow="Deep dive">
+    <SectionFrame id="listen" number="09" eyebrow="Deep dive">
       <h2 className="font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl">
         Twenty minutes on the thinking behind it.
       </h2>
