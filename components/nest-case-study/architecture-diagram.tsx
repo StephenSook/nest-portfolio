@@ -5,13 +5,23 @@ import { SectionFrame } from "./section-frame";
 
 const EASE = [0.2, 0.8, 0.2, 1] as const;
 
-const nodes = [
+type NodeDef = {
+  id: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  label: string;
+  hint: string | [string, string];
+};
+
+const nodes: NodeDef[] = [
   { id: "user", x: 200, y: 10, w: 200, h: 60, label: "USER QUESTION", hint: "e.g., \u201chow do I get Chafee ETV?\u201d" },
   { id: "classifier", x: 180, y: 120, w: 240, h: 60, label: "KEYWORD CLASSIFIER", hint: "deterministic · regex + phrase list" },
   { id: "crisis", x: 20, y: 260, w: 220, h: 80, label: "988 / 211", hint: "crisis bypass · no LLM call" },
-  { id: "retrieval", x: 360, y: 260, w: 220, h: 80, label: "CHROMADB RETRIEVAL", hint: "top-k passages · Georgia policy corpus" },
+  { id: "retrieval", x: 360, y: 260, w: 220, h: 80, label: "CHROMADB RETRIEVAL", hint: ["top-k passages", "Georgia policy corpus"] },
   { id: "llm", x: 360, y: 380, w: 220, h: 80, label: "GROQ · LLAMA 3.3 70B", hint: "grounded generation · cites sources" },
-  { id: "response", x: 360, y: 500, w: 220, h: 70, label: "CITED ANSWER", hint: "inline source links · Embark · ASCEND · Wellroot" },
+  { id: "response", x: 360, y: 500, w: 220, h: 80, label: "CITED ANSWER", hint: ["inline source links", "Embark · ASCEND · Wellroot"] },
 ];
 
 const pathVariant = {
@@ -47,12 +57,17 @@ function Node({
   w: number;
   h: number;
   label: string;
-  hint: string;
+  hint: string | [string, string];
   delay: number;
   tone?: "default" | "crisis";
 }) {
   const stroke = tone === "crisis" ? "#e27d60" : "rgba(255,255,255,0.22)";
   const labelColor = tone === "crisis" ? "#e27d60" : "currentColor";
+  const hintLines = Array.isArray(hint) ? hint : [hint];
+  const multiline = hintLines.length > 1;
+  const labelDy = multiline ? -10 : -6;
+  const firstHintDy = multiline ? 6 : 14;
+
   return (
     <motion.g
       custom={delay}
@@ -73,7 +88,7 @@ function Node({
       />
       <text
         x={x + w / 2}
-        y={y + h / 2 - 6}
+        y={y + h / 2 + labelDy}
         textAnchor="middle"
         fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
         fontSize={11}
@@ -82,17 +97,20 @@ function Node({
       >
         {label}
       </text>
-      <text
-        x={x + w / 2}
-        y={y + h / 2 + 14}
-        textAnchor="middle"
-        fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
-        fontSize={10}
-        fill="currentColor"
-        opacity={0.48}
-      >
-        {hint}
-      </text>
+      {hintLines.map((line, i) => (
+        <text
+          key={i}
+          x={x + w / 2}
+          y={y + h / 2 + firstHintDy + i * 12}
+          textAnchor="middle"
+          fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
+          fontSize={10}
+          fill="currentColor"
+          opacity={0.48}
+        >
+          {line}
+        </text>
+      ))}
     </motion.g>
   );
 }
