@@ -81,19 +81,19 @@ export function TeamCard({ member, index }: { member: TeamMember; index: number 
             <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
               Class of
             </dt>
-            <dd className="text-foreground">{member.classOf}</dd>
+            <dd className="whitespace-pre-line text-right text-foreground">{member.classOf}</dd>
           </div>
           <div className="flex items-baseline justify-between gap-4">
             <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
               Summer &lsquo;26
             </dt>
-            <dd className="text-foreground">{member.summer26}</dd>
+            <dd className="whitespace-pre-line text-right text-foreground">{member.summer26}</dd>
           </div>
           <div className="flex items-baseline justify-between gap-4">
             <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
               Dream
             </dt>
-            <dd className="text-foreground">{member.dreamRole}</dd>
+            <dd className="whitespace-pre-line text-right text-foreground">{member.dreamRole}</dd>
           </div>
         </dl>
 

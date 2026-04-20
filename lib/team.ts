@@ -19,8 +19,8 @@ export const team: TeamMember[] = [
     github: "https://github.com/StephenSook",
     portfolio: "https://stephensookra.com",
     classOf: "2028",
-    summer26: "Citadel",
-    dreamRole: "JPMorgan Chase",
+    summer26: "SWE · XR Dojo / SmashTap",
+    dreamRole: "Founders",
   },
   {
     name: "Tylin Delaney",
@@ -30,8 +30,8 @@ export const team: TeamMember[] = [
     github: "https://github.com/tylinndd",
     portfolio: "https://tylindelaney.dev/",
     classOf: "2028",
-    summer26: "NVIDIA",
-    dreamRole: "Wells Fargo",
+    summer26: "SWE · XR Dojo\nREU · UTD",
+    dreamRole: "Founders",
   },
   {
     name: "Brenden Bryant",
