@@ -12,6 +12,17 @@
   --color-muted: #a1a1aa;
   --color-subtle: #71717a;
   --color-border: #27272a;
+
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 :root {
