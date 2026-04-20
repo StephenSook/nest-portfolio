@@ -61,7 +61,7 @@ export function StakesReveal() {
           className="relative flex min-h-[80vh] items-center border-b border-white/[0.05] px-6 md:min-h-[90vh] md:px-12"
         >
           <div className="mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-[1fr_auto] md:items-end md:gap-20">
-            <p className="font-serif font-normal tracking-tight leading-[0.88] text-[clamp(5.5rem,16vw,13rem)]">
+            <p className="font-serif font-normal tabular-nums tracking-tight leading-[0.88] text-[clamp(5.5rem,16vw,13rem)]">
               {s.figure}
               {s.unit && (
                 <span className="ml-3 align-baseline font-sans text-xl font-normal text-muted md:ml-6 md:text-2xl">

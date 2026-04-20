@@ -30,7 +30,7 @@ export function Outcomes() {
       <dl className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
         {facts.map((f) => (
           <div key={f.label} className="border-t border-white/[0.08] pt-5">
-            <dt className="font-serif text-5xl leading-none tracking-tight md:text-6xl">
+            <dt className="font-serif text-5xl leading-none tabular-nums tracking-tight md:text-6xl">
               {f.figure}
             </dt>
             <dd className="mt-3 text-sm leading-snug text-muted md:text-base">{f.label}</dd>

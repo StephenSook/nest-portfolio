@@ -18,11 +18,18 @@ export const metadata: Metadata = {
   title: "Nest · A case study",
   description:
     "How three KSU CS students replaced Georgia's 250-page foster care transition handbook with an AI navigator that onboards in two minutes.",
+  alternates: { canonical: "/nest" },
   openGraph: {
     title: "Nest · A case study",
     description:
       "How three KSU CS students replaced Georgia's 250-page foster care transition handbook with an AI navigator.",
     type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nest · A case study",
+    description:
+      "How three KSU CS students replaced Georgia's 250-page foster care transition handbook with an AI navigator.",
   },
 };
 
