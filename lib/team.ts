@@ -19,7 +19,7 @@ export const team: TeamMember[] = [
     github: "https://github.com/StephenSook",
     portfolio: "https://stephensookra.com",
     classOf: "2028",
-    summer26: "SWE · XR Dojo / SmashTap",
+    summer26: "SWE · XR Dojo / SMASH TA",
     dreamRole: "Founders",
   },
   {
