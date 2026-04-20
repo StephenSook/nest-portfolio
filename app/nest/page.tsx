@@ -24,9 +24,68 @@ export const metadata: Metadata = {
   },
 };
 
+const SITE_URL = "https://nest-portfolio-pi.vercel.app";
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Nest — A case study",
+  description:
+    "How three KSU CS students replaced Georgia's 250-page foster care transition handbook with an AI navigator that onboards in two minutes.",
+  image: `${SITE_URL}/nest/opengraph-image`,
+  datePublished: "2026-04-15",
+  dateModified: "2026-04-20",
+  inLanguage: "en-US",
+  isAccessibleForFree: true,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/nest`,
+  },
+  author: [
+    {
+      "@type": "Person",
+      name: "Stephen Sookra",
+      url: "https://stephensookra.com",
+      sameAs: [
+        "https://www.linkedin.com/in/stephen-sookra-633682339/",
+        "https://github.com/StephenSook",
+      ],
+    },
+    {
+      "@type": "Person",
+      name: "Tylin Delaney",
+      url: "https://tylindelaney.dev/",
+      sameAs: [
+        "https://www.linkedin.com/in/tylin-delaney/",
+        "https://github.com/tylinndd",
+      ],
+    },
+    {
+      "@type": "Person",
+      name: "Brenden Bryant",
+      sameAs: ["https://www.linkedin.com/in/brenden-bryant-422464329/"],
+    },
+  ],
+  publisher: {
+    "@type": "CollegeOrUniversity",
+    name: "Kennesaw State University",
+    department: "College of Computing and Software Engineering",
+    url: "https://ccse.kennesaw.edu/",
+  },
+  about: [
+    "Foster care",
+    "Transition services",
+    "Retrieval-Augmented Generation",
+    "Georgia public policy",
+  ],
+  keywords:
+    "foster care, aging out, RAG, ChromaDB, Llama 3, Kennesaw State, Georgia DFCS",
+};
+
 export default function NestCaseStudy() {
   return (
     <main id="main">
+      <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
       <ScrollProgress />
       <CaseHero />
       <StakesReveal />
