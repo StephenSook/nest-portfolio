@@ -9,6 +9,7 @@ import { ArchitectureDiagram } from "@/components/nest-case-study/architecture-d
 import { StackRationale } from "@/components/nest-case-study/stack-rationale";
 import { Outcomes } from "@/components/nest-case-study/outcomes";
 import { AudioDeepDive } from "@/components/nest-case-study/audio-deep-dive";
+import { Sources } from "@/components/nest-case-study/sources";
 import { CaseFooter } from "@/components/nest-case-study/case-footer";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function NestCaseStudy() {
       <StackRationale />
       <Outcomes />
       <AudioDeepDive />
+      <Sources />
       <CaseFooter />
     </main>
   );

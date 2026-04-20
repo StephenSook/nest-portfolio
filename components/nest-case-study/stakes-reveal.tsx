@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { Cite } from "./cite";
 
 const EASE = [0.2, 0.8, 0.2, 1] as const;
 
@@ -8,19 +9,23 @@ const stats = [
   {
     figure: "~700",
     label: "Georgia foster youth age out of state care each year.",
+    citation: 1,
   },
   {
     figure: "1 in 4",
     label: "will experience homelessness within twelve months.",
+    citation: 2,
   },
   {
     figure: "<3%",
     label: "will earn a four-year college degree by age 26.",
+    citation: 3,
   },
   {
     figure: "250",
     label: "pages in the DFCS handbook that is the state's main resource.",
     unit: "pages",
+    citation: 4,
   },
 ];
 
@@ -66,6 +71,7 @@ export function StakesReveal() {
             </p>
             <p className="max-w-md text-pretty text-lg leading-relaxed text-muted md:text-xl">
               {s.label}
+              <Cite n={s.citation} />
             </p>
           </div>
           <span className="absolute bottom-6 right-6 font-mono text-[10px] uppercase tracking-[0.18em] text-subtle md:bottom-10 md:right-12">
