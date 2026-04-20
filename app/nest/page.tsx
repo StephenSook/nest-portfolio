@@ -9,6 +9,7 @@ import { ArchitectureDiagram } from "@/components/nest-case-study/architecture-d
 import { StackRationale } from "@/components/nest-case-study/stack-rationale";
 import { Outcomes } from "@/components/nest-case-study/outcomes";
 import { TeamContributions } from "@/components/nest-case-study/team-contributions";
+import { Lessons } from "@/components/nest-case-study/lessons";
 import { AudioDeepDive } from "@/components/nest-case-study/audio-deep-dive";
 import { Sources } from "@/components/nest-case-study/sources";
 import { CaseFooter } from "@/components/nest-case-study/case-footer";
@@ -97,6 +98,7 @@ export default function NestCaseStudy() {
       <StackRationale />
       <Outcomes />
       <TeamContributions />
+      <Lessons />
       <AudioDeepDive />
       <Sources />
       <CaseFooter />
