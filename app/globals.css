@@ -63,3 +63,84 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+@media print {
+  @page {
+    margin: 18mm;
+  }
+
+  :root {
+    color-scheme: light;
+    --color-background: #ffffff;
+    --color-foreground: #0a0a0a;
+    --color-muted: #333333;
+    --color-subtle: #555555;
+    --color-accent: #a85d00;
+    --color-border: #d4d4d8;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0a0a0a !important;
+    font-size: 11pt;
+  }
+
+  a[href="#main"],
+  .fixed,
+  audio,
+  [class*="bg-accent"] {
+    display: none !important;
+  }
+
+  [class*="bg-white"] {
+    background: transparent !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #666;
+    word-break: break-all;
+  }
+
+  [class*="min-h-screen"],
+  [class*="min-h-[80vh]"],
+  [class*="min-h-[90vh]"] {
+    min-height: 0 !important;
+  }
+
+  section {
+    break-inside: avoid;
+    padding-top: 1rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  h1 {
+    font-size: 2.75rem !important;
+  }
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  h3 {
+    font-size: 1.2rem !important;
+  }
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  details > summary {
+    display: none !important;
+  }
+  details {
+    display: block !important;
+  }
+
+  svg {
+    max-width: 100% !important;
+    height: auto !important;
+    break-inside: avoid;
+  }
+}
