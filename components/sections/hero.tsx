@@ -34,7 +34,7 @@ export function Hero() {
         transition={{ duration: 0.6, delay: 0.1 }}
         className="flex items-center justify-between text-sm"
       >
-        <span className="font-serif text-2xl leading-none">Nest</span>
+        <span className="font-serif text-3xl leading-none md:text-[2rem]">Nest</span>
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
           KSU CCSE · C-Day 2026
         </span>

@@ -34,7 +34,7 @@ export function CaseHero() {
       >
         <Link
           href="/"
-          className="font-serif text-2xl leading-none transition-opacity hover:opacity-80"
+          className="font-serif text-3xl leading-none transition-opacity hover:opacity-80 md:text-[2rem]"
         >
           Nest
         </Link>
