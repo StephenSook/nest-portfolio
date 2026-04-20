@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ScrollProgress } from "@/components/nest-case-study/scroll-progress";
 import { CaseHero } from "@/components/nest-case-study/case-hero";
 import { StakesReveal } from "@/components/nest-case-study/stakes-reveal";
 import { Problem } from "@/components/nest-case-study/problem";
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
 export default function NestCaseStudy() {
   return (
     <main>
+      <ScrollProgress />
       <CaseHero />
       <StakesReveal />
       <Problem />
