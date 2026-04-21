@@ -110,8 +110,8 @@ export function TeamContributions() {
         </span>
         <p className="mt-5 text-base leading-relaxed text-muted md:text-lg">
           Scheduled May 18, 2026: feedback session at MAAC with a Georgia
-          foster-care advocacy coalition. First time Nest meets the
-          practitioners whose policy and program work the corpus cites.
+          foster-care advocacy coalition. First demo to the advocates and
+          legal-services orgs working on youth transition.
         </p>
       </div>
 
