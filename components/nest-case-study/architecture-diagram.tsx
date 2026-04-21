@@ -168,9 +168,20 @@ export function ArchitectureDiagram() {
       </p>
 
       <div className="mt-12">
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
-          Try a question &middot; the flow animates below
-        </span>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+            Try a question &middot; the flow animates below
+          </span>
+          {activeQ !== null && (
+            <button
+              type="button"
+              onClick={() => setActiveQ(null)}
+              className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-accent focus-visible:text-accent"
+            >
+              Clear &times;
+            </button>
+          )}
+        </div>
         <div className="mt-4 flex flex-wrap gap-2">
           {QUESTIONS.map((question, i) => {
             const pressed = activeQ === i;
