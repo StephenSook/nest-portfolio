@@ -105,11 +105,31 @@ const faqJsonLd = {
   })),
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: `${SITE_URL}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Nest — a case study",
+      item: `${SITE_URL}/nest`,
+    },
+  ],
+};
+
 export default function NestCaseStudy() {
   return (
     <main id="main">
       <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
       <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
       <ScrollProgress />
       <CaseHero />
       <StakesReveal />
