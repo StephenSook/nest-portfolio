@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ScrollProgress } from "@/components/nest-case-study/scroll-progress";
+import { SectionNav } from "@/components/nest-case-study/section-nav";
 import { CaseHero } from "@/components/nest-case-study/case-hero";
 import { StakesReveal } from "@/components/nest-case-study/stakes-reveal";
 import { Problem } from "@/components/nest-case-study/problem";
@@ -131,6 +132,7 @@ export default function NestCaseStudy() {
       <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
       <ScrollProgress />
+      <SectionNav />
       <CaseHero />
       <StakesReveal />
       <Problem />

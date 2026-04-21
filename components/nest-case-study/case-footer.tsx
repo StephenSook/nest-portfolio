@@ -6,7 +6,7 @@ export function CaseFooter() {
       <div className="flex flex-col gap-20">
         <div className="grid gap-10 md:grid-cols-[auto_1fr] md:gap-20">
           <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle md:pt-3">
-            09 · End note
+            12 · End note
           </span>
           <div>
             <h2 className="font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl">
