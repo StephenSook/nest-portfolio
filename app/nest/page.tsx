@@ -10,6 +10,7 @@ import { StackRationale } from "@/components/nest-case-study/stack-rationale";
 import { Outcomes } from "@/components/nest-case-study/outcomes";
 import { TeamContributions } from "@/components/nest-case-study/team-contributions";
 import { Lessons } from "@/components/nest-case-study/lessons";
+import { Faq, faqItems } from "@/components/nest-case-study/faq";
 import { AudioDeepDive } from "@/components/nest-case-study/audio-deep-dive";
 import { Sources } from "@/components/nest-case-study/sources";
 import { CaseFooter } from "@/components/nest-case-study/case-footer";
@@ -91,10 +92,24 @@ const articleJsonLd = {
     "foster care, aging out, RAG, ChromaDB, Llama 3, Kennesaw State, Georgia DFCS",
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
 export default function NestCaseStudy() {
   return (
     <main id="main">
       <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
+      <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       <ScrollProgress />
       <CaseHero />
       <StakesReveal />
@@ -106,6 +121,7 @@ export default function NestCaseStudy() {
       <Outcomes />
       <TeamContributions />
       <Lessons />
+      <Faq />
       <AudioDeepDive />
       <Sources />
       <CaseFooter />
