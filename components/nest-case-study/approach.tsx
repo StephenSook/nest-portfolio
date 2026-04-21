@@ -18,6 +18,21 @@ const beats = [
   },
 ];
 
+const nonGoals = [
+  {
+    title: "Not a benefits screener.",
+    body: "SNAP, TANF, and WIC eligibility belong to a proper screener. Best Fit — an Atlanta-built tool that already does this — is where we route. Duplicating it would be worse than linking to it.",
+  },
+  {
+    title: "Not a crisis counselor.",
+    body: "When a message contains crisis language, Nest bypasses the model and surfaces 988 and 211 directly. Trained humans belong there, not a system trained on policy PDFs.",
+  },
+  {
+    title: "Not a DFCS integration.",
+    body: "We cite public policy a youth can re-read themselves. Real state-system integration is a separate project with separate compliance requirements — and well beyond what a student team should ship unsupervised.",
+  },
+];
+
 export function Approach() {
   return (
     <SectionFrame id="approach" number="03" eyebrow="Our approach">
@@ -47,6 +62,28 @@ export function Approach() {
           </li>
         ))}
       </ol>
+
+      <div className="mt-24 border-t border-white/[0.08] pt-12">
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+          And equally &mdash; what Nest isn&rsquo;t
+        </span>
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+          Scope discipline was a design goal, not a regret. Three decisions we made early
+          and never revisited:
+        </p>
+        <ul className="mt-10 grid gap-8 md:grid-cols-3 md:gap-8">
+          {nonGoals.map((g) => (
+            <li key={g.title} className="border-t border-white/[0.04] pt-5">
+              <p className="font-serif text-xl leading-tight tracking-tight text-foreground/90 md:text-2xl">
+                {g.title}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">
+                {g.body}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </SectionFrame>
   );
 }
