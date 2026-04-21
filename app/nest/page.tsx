@@ -3,6 +3,7 @@ import { ScrollProgress } from "@/components/nest-case-study/scroll-progress";
 import { SectionNav } from "@/components/nest-case-study/section-nav";
 import { MobileNav } from "@/components/nest-case-study/mobile-nav";
 import { CommandPalette } from "@/components/nest-case-study/command-palette";
+import { ShortcutOverlay } from "@/components/nest-case-study/shortcut-overlay";
 import { CaseHero } from "@/components/nest-case-study/case-hero";
 import { StakesReveal } from "@/components/nest-case-study/stakes-reveal";
 import { Problem } from "@/components/nest-case-study/problem";
@@ -171,6 +172,7 @@ export default function NestCaseStudy() {
       <SectionNav />
       <MobileNav />
       <CommandPalette />
+      <ShortcutOverlay />
       <CaseHero />
       <StakesReveal />
       <Problem />
