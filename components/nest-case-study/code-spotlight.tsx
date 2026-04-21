@@ -2,6 +2,7 @@ import { codeToHast } from "shiki";
 import { codeSamples, type CodeSample } from "@/lib/code-samples";
 import { hastToReact } from "@/lib/hast-to-react";
 import { CopyCodeButton } from "./copy-code-button";
+import { RefusalPlayground } from "./refusal-playground";
 
 type RenderedSample = CodeSample & { ast: Awaited<ReturnType<typeof codeToHast>> };
 
@@ -78,6 +79,8 @@ export async function CodeSpotlight() {
             </a>{" "}
             for production source.
           </p>
+
+          <RefusalPlayground />
         </div>
       </div>
     </section>
