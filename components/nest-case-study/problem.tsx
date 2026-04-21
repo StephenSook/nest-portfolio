@@ -1,3 +1,4 @@
+import { HandbookCompare } from "./handbook-compare";
 import { SectionFrame } from "./section-frame";
 import { Term } from "./term";
 
@@ -32,6 +33,8 @@ export function Problem() {
           out who to call first.
         </p>
       </div>
+
+      <HandbookCompare />
     </SectionFrame>
   );
 }
