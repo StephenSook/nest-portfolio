@@ -1,6 +1,7 @@
 "use client";
 
 import { Command } from "cmdk";
+import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { sections } from "@/lib/sections";
 
@@ -91,6 +92,11 @@ export function CommandPalette() {
       overlayClassName="fixed inset-0 bg-black/75 backdrop-blur-sm motion-safe:animate-in motion-safe:fade-in motion-safe:duration-150"
       contentClassName="relative w-full max-w-xl overflow-hidden rounded-sm border border-white/10 bg-[#0a0a0a] shadow-2xl shadow-black/60 motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in-95 motion-safe:slide-in-from-top-2 motion-safe:duration-150"
     >
+      <Dialog.Title className="sr-only">Command palette</Dialog.Title>
+      <Dialog.Description className="sr-only">
+        Jump to any section of this case study or run an action like copy URL,
+        save as PDF, or open the live Nest app.
+      </Dialog.Description>
       <Command.Input
         placeholder="Jump to section, or run a command..."
         className="w-full border-b border-white/10 bg-transparent px-5 py-4 font-mono text-sm tracking-wide text-foreground outline-none placeholder:text-subtle"
