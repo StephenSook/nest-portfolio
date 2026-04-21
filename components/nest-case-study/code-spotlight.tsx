@@ -1,6 +1,7 @@
 import { codeToHast } from "shiki";
 import { codeSamples, type CodeSample } from "@/lib/code-samples";
 import { hastToReact } from "@/lib/hast-to-react";
+import { CopyCodeButton } from "./copy-code-button";
 
 type RenderedSample = CodeSample & { ast: Awaited<ReturnType<typeof codeToHast>> };
 
@@ -52,7 +53,8 @@ export async function CodeSpotlight() {
                     {sample.path}
                   </span>
                 </figcaption>
-                <div className="overflow-hidden rounded-sm border border-white/[0.08] bg-[#0d1117]">
+                <div className="group relative overflow-hidden rounded-sm border border-white/[0.08] bg-[#0d1117]">
+                  <CopyCodeButton code={sample.code} />
                   <div className="overflow-x-auto p-6 font-mono text-[13px] leading-[1.6] md:p-8">
                     {hastToReact(sample.ast)}
                   </div>
