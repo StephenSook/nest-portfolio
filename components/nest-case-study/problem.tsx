@@ -1,3 +1,4 @@
+import { Cite } from "./cite";
 import { HandbookCompare } from "./handbook-compare";
 import { SectionFrame } from "./section-frame";
 import { Term } from "./term";
@@ -15,7 +16,7 @@ export function Problem() {
           <em className="font-serif italic text-foreground/80">
             Making the Transition
           </em>{" "}
-          handbook. Two hundred and fifty pages. Twenty-plus deadlines in the
+          handbook<Cite n={4} />. Two hundred and fifty pages. Twenty-plus deadlines in the
           first ninety days after exit. No search, no personalization, no way to
           tell which of the programs you actually qualify for.
         </p>
