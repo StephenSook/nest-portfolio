@@ -107,6 +107,38 @@ const faqJsonLd = {
   })),
 };
 
+const softwareAppJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Nest",
+  description:
+    "AI transition navigator for Georgia foster youth aging out of state care. Grounded retrieval over the Georgia DFCS handbook and partner-nonprofit corpora — every answer cited to real policy.",
+  url: "https://nest-zeta-nine.vercel.app",
+  applicationCategory: "HealthApplication",
+  applicationSubCategory: "Social services navigator",
+  operatingSystem: "Web",
+  browserRequirements: "Requires JavaScript. Requires HTML5.",
+  inLanguage: "en-US",
+  isAccessibleForFree: true,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  featureList: [
+    "Retrieval-augmented answers cited to Georgia DFCS policy",
+    "Deterministic crisis routing to 988 and 211",
+    "Two-minute intake generating a ninety-day transition plan",
+    "Refusal sentinel — the model never speculates past the corpus",
+  ],
+  author: articleJsonLd.author,
+  publisher: articleJsonLd.publisher,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/nest`,
+  },
+};
+
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -131,6 +163,7 @@ export default function NestCaseStudy() {
     <main id="main">
       <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
       <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      <script type="application/ld+json">{JSON.stringify(softwareAppJsonLd)}</script>
       <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
       <ScrollProgress />
       <SectionNav />
