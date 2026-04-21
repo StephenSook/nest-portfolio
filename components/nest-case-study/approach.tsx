@@ -31,6 +31,18 @@ const nonGoals = [
     title: "Not a DFCS integration.",
     body: "We cite public policy a youth can re-read themselves. Real state-system integration is a separate project with separate compliance requirements — and well beyond what a student team should ship unsupervised.",
   },
+  {
+    title: "Not a legal adviser.",
+    body: "Emancipation, tenancy, and parental-rights questions need a licensed attorney. We cite policy; we don’t interpret it against the specifics of one youth’s situation. Georgia Appleseed and Georgia Legal Services are one link away.",
+  },
+  {
+    title: "Not trained on user conversations.",
+    body: "Nothing a youth types feeds back into any model. The corpus is static, versioned, and reviewed by humans — a chat log can’t silently change what Nest tells the next kid.",
+  },
+  {
+    title: "Not a native mobile app.",
+    body: "A web URL runs on a library Chromebook, a county wifi hotspot, and a borrowed phone with no app-store account. Shipping native meant excluding the youth with the least stable access.",
+  },
 ];
 
 export function Approach() {
@@ -68,7 +80,7 @@ export function Approach() {
           And equally &mdash; what Nest isn&rsquo;t
         </span>
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-          Scope discipline was a design goal, not a regret. Three decisions we made early
+          Scope discipline was a design goal, not a regret. Six decisions we made early
           and never revisited:
         </p>
         <ul className="mt-10 grid gap-8 md:grid-cols-3 md:gap-8">
