@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import Link from "next/link";
 import { MagneticLink } from "@/components/ui/magnetic-link";
 
 const EASE = [0.2, 0.8, 0.2, 1] as const;
@@ -87,14 +88,12 @@ export function Hero() {
               />
             </svg>
           </MagneticLink>
-          <a
-            href="https://github.com/tylinndd/nest"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/nest"
             className="text-base text-muted underline-offset-4 transition-colors hover:text-foreground hover:underline"
           >
-            View on GitHub
-          </a>
+            Read the case study
+          </Link>
         </motion.div>
       </motion.div>
 
