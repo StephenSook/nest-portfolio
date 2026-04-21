@@ -1,3 +1,4 @@
+import { getPortfolioStats } from "@/lib/portfolio-stats";
 import { SectionFrame } from "./section-frame";
 
 type Contribution = {
@@ -40,6 +41,8 @@ const contributions: Contribution[] = [
 ];
 
 export function TeamContributions() {
+  const stats = getPortfolioStats();
+
   return (
     <SectionFrame id="credits" number="08" eyebrow="Who built what">
       <h2 className="font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl">
@@ -94,6 +97,58 @@ export function TeamContributions() {
           Until then, list stays at the organizational level.
         */}
       </div>
+
+      {stats.commits > 0 && (
+        <div className="mt-16 border-t border-white/[0.08] pt-12">
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+            Build log &middot; this portfolio
+          </span>
+          <div className="mt-6 grid gap-10 md:grid-cols-[auto_1fr] md:items-start md:gap-16">
+            <p className="font-serif text-[clamp(4rem,10vw,7rem)] font-normal leading-none tabular-nums">
+              {stats.commits}
+              <span className="ml-3 align-baseline font-sans text-base font-normal text-subtle md:text-lg">
+                commits
+              </span>
+            </p>
+            <div className="space-y-5 text-base leading-relaxed text-muted md:text-lg">
+              <p>
+                Every commit in this case-study repo is public and signed. The
+                Nest application itself — backend, RAG pipeline, policy corpus
+                — lives in{" "}
+                <a
+                  href="https://github.com/tylinndd/nest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground underline decoration-white/20 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                >
+                  Tylin&rsquo;s repository
+                </a>{" "}
+                with its own commit history.
+              </p>
+              {stats.topDirs.length > 0 && (
+                <ul className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+                  {stats.topDirs.map((d) => (
+                    <li key={d.dir}>
+                      <span className="text-foreground/80">{d.dir}/</span>{" "}
+                      <span className="tabular-nums">{d.changes}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+                <a
+                  href="https://github.com/StephenSook/nest-portfolio/commits/main"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-accent"
+                >
+                  Full history on GitHub &rarr;
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </SectionFrame>
   );
 }
