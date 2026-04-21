@@ -1,4 +1,5 @@
 import { MagneticLink } from "@/components/ui/magnetic-link";
+import { PrintButton } from "./print-button";
 
 export function CaseFooter() {
   return (
@@ -32,15 +33,18 @@ export function CaseFooter() {
             </p>
           </div>
 
-          <MagneticLink
-            href="/"
-            className="group inline-flex items-center gap-3 self-start font-serif text-2xl leading-none tracking-tight transition-opacity hover:opacity-80 md:text-3xl"
-          >
-            <span aria-hidden className="transition-transform group-hover:-translate-x-1">
-              &larr;
-            </span>
-            Back to portfolio
-          </MagneticLink>
+          <div className="flex flex-col items-start gap-6 md:items-end">
+            <PrintButton />
+            <MagneticLink
+              href="/"
+              className="group inline-flex items-center gap-3 self-start font-serif text-2xl leading-none tracking-tight transition-opacity hover:opacity-80 md:text-3xl"
+            >
+              <span aria-hidden className="transition-transform group-hover:-translate-x-1">
+                &larr;
+              </span>
+              Back to portfolio
+            </MagneticLink>
+          </div>
         </div>
 
         <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
