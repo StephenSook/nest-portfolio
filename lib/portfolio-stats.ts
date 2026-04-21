@@ -74,7 +74,10 @@ export function getPortfolioStats(): PortfolioStats {
       topDirs,
     };
     return cached;
-  } catch {
+  } catch (err) {
+    // Build-time only — if this fails silently we ship a Credits section
+    // that says "0 commits" and looks like an empty repo. Warn loudly.
+    console.warn("[portfolio-stats] git lookup failed, using fallback:", err);
     return fallback;
   }
 }

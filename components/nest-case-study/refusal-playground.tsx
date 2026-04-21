@@ -9,12 +9,14 @@ type Result =
   | { kind: "refuse" };
 
 const CRISIS_PATTERNS: { pattern: RegExp; label: string }[] = [
-  { pattern: /\b(kill|hurt|harm)\s+(my\s?self|myself)\b/i, label: "self-harm language" },
+  { pattern: /\b(kill|hurt|harm|cut)\s+(my\s?self|myself|me)\b/i, label: "self-harm language" },
   { pattern: /\bsuicid(e|al)\b/i, label: "suicide" },
-  { pattern: /\bend(ing)?\s+it(\s+all)?\b/i, label: "ending it" },
+  { pattern: /\b(kms|unalive)\b/i, label: "self-harm slang" },
+  { pattern: /\bend(ing)?\s+(it|my\s+life)\b/i, label: "ending my life" },
   { pattern: /\bwant\s+to\s+die\b/i, label: "wanting to die" },
-  { pattern: /\bi'?m\s+(not\s+)?safe\b/i, label: "safety phrasing" },
-  { pattern: /\brun(ning)?\s+away\b/i, label: "running away" },
+  { pattern: /\bbetter\s+off\s+dead\b/i, label: "better off dead" },
+  { pattern: /\b(don'?t|do\s+not)\s+want\s+to\s+be\s+here\b/i, label: "not wanting to be here" },
+  { pattern: /\bi'?m\s+not\s+safe\b/i, label: "not safe" },
 ];
 
 const CITED_ANSWERS: {
@@ -95,9 +97,10 @@ export function RefusalPlayground() {
         See the three branches yourself.
       </h4>
       <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted md:text-base">
-        A scripted reproduction of the logic above. Crisis phrasing routes to
-        988 / 211. Foster-care questions resolve to a cited passage. Everything
-        else refuses &mdash; exactly the shape of the production sentinel.
+        A scripted reproduction of the branching logic &mdash; not the full
+        classifier. Crisis phrasing routes to 988 / 211. Foster-care keywords
+        resolve to a cited passage. Everything else refuses with the production
+        sentinel&rsquo;s exact string.
       </p>
 
       <form onSubmit={onSubmit} className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -220,9 +223,10 @@ export function RefusalPlayground() {
               vouchers, or Independent Living.
             </p>
             <p className="mt-4 text-xs leading-relaxed text-muted">
-              The production sentinel returns this exact string any time retrieval
-              similarity falls below threshold. No hallucinated fallback &mdash; the
-              model is instructed to refuse rather than guess.
+              The production sentinel is instructed to return a refusal like
+              this whenever retrieval similarity falls below threshold. The
+              invariant is &ldquo;cite the corpus or refuse&rdquo; &mdash; no
+              hallucinated fallback.
             </p>
           </div>
         )}

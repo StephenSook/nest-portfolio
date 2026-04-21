@@ -1,21 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const STORAGE_KEY = "nest-listen-prompt:v1";
 const SHOW_AFTER_MS = 6000;
 
 export function ListenInstead() {
   const [visible, setVisible] = useState(false);
+  const dismissedRef = useRef(false);
+  const timerRef = useRef<number | null>(null);
+
+  function persistDismissal() {
+    dismissedRef.current = true;
+    if (timerRef.current !== null) {
+      window.clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    setVisible(false);
+    try {
+      localStorage.setItem(STORAGE_KEY, "dismissed");
+    } catch {
+      // Safari private mode / sandboxed iframe — in-memory ref still blocks
+      // the 6s timer and any further observer fires for this session.
+    }
+  }
 
   useEffect(() => {
-    let dismissed = false;
+    let alreadyDismissed = false;
     try {
-      dismissed = localStorage.getItem(STORAGE_KEY) === "dismissed";
+      alreadyDismissed = localStorage.getItem(STORAGE_KEY) === "dismissed";
     } catch {
-      // localStorage can throw in sandboxed contexts — fail open
+      // ignore; behave as not-yet-dismissed
     }
-    if (dismissed) return;
+    if (alreadyDismissed) {
+      dismissedRef.current = true;
+      return;
+    }
 
     const listenSection = document.getElementById("listen");
     if (!listenSection) return;
@@ -24,7 +44,7 @@ export function ListenInstead() {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
-            dismiss();
+            persistDismissal();
           }
         }
       },
@@ -32,29 +52,25 @@ export function ListenInstead() {
     );
     observer.observe(listenSection);
 
-    const timer = window.setTimeout(() => setVisible(true), SHOW_AFTER_MS);
+    timerRef.current = window.setTimeout(() => {
+      if (!dismissedRef.current) setVisible(true);
+    }, SHOW_AFTER_MS);
 
     return () => {
       observer.disconnect();
-      window.clearTimeout(timer);
+      if (timerRef.current !== null) {
+        window.clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
     };
   }, []);
-
-  function dismiss() {
-    setVisible(false);
-    try {
-      localStorage.setItem(STORAGE_KEY, "dismissed");
-    } catch {
-      // see above — fail silently
-    }
-  }
 
   function onListen() {
     const target = document.getElementById("listen");
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    dismiss();
+    persistDismissal();
   }
 
   if (!visible) return null;
@@ -77,7 +93,7 @@ export function ListenInstead() {
           </div>
           <button
             type="button"
-            onClick={dismiss}
+            onClick={persistDismissal}
             aria-label="Dismiss listen suggestion"
             className="-m-1 shrink-0 rounded-sm p-1 font-mono text-[11px] text-subtle transition-colors hover:text-accent"
           >

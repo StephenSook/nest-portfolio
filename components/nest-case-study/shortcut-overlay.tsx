@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useIsMac } from "@/lib/use-is-mac";
 
 type Shortcut = {
   keys: string[];
@@ -17,19 +18,11 @@ function isEditable(target: EventTarget | null): boolean {
 
 export function ShortcutOverlay() {
   const [open, setOpen] = useState(false);
-  const [isMac, setIsMac] = useState(false);
-
-  useEffect(() => {
-    const nav = navigator as Navigator & {
-      userAgentData?: { platform?: string };
-    };
-    const platform = nav.userAgentData?.platform ?? nav.platform ?? "";
-    setIsMac(/mac/i.test(platform));
-  }, []);
+  const isMac = useIsMac();
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape" && open) {
+      if (e.key === "Escape") {
         setOpen(false);
         return;
       }
@@ -40,7 +33,7 @@ export function ShortcutOverlay() {
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+  }, []);
 
   useEffect(() => {
     if (!open) return;

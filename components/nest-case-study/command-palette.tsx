@@ -4,6 +4,7 @@ import { Command } from "cmdk";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { sections } from "@/lib/sections";
+import { useIsMac } from "@/lib/use-is-mac";
 
 type Action = {
   id: string;
@@ -14,15 +15,8 @@ type Action = {
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
-  const [modLabel, setModLabel] = useState("Ctrl");
-
-  useEffect(() => {
-    const ua = navigator.userAgent;
-    const platform =
-      (navigator as Navigator & { userAgentData?: { platform?: string } })
-        .userAgentData?.platform ?? navigator.platform ?? "";
-    if (/Mac|iPhone|iPad/i.test(`${platform} ${ua}`)) setModLabel("\u2318");
-  }, []);
+  const isMac = useIsMac();
+  const modLabel = isMac ? "\u2318" : "Ctrl";
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -37,6 +31,9 @@ export function CommandPalette() {
 
   const run = (fn: () => void) => {
     setOpen(false);
+    // Let Radix Dialog finish its close animation and restore focus before
+    // scroll/nav fires — otherwise scrollIntoView races the unmount and
+    // focus restoration lands on whatever the Dialog portal was wrapping.
     setTimeout(fn, 60);
   };
 
