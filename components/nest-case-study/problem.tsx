@@ -1,4 +1,5 @@
 import { SectionFrame } from "./section-frame";
+import { Term } from "./term";
 
 export function Problem() {
   return (
@@ -9,7 +10,7 @@ export function Problem() {
       <div className="mt-10 space-y-6 text-lg leading-relaxed text-muted md:text-xl">
         <p>
           Every foster youth aging out in Georgia is handed the same document:
-          the DFCS{" "}
+          the <Term term="dfcs">DFCS</Term>{" "}
           <em className="font-serif italic text-foreground/80">
             Making the Transition
           </em>{" "}
@@ -19,9 +20,11 @@ export function Problem() {
         </p>
         <p>
           Case managers carry forty-plus youth each. A deadline missed at
-          nineteen — the Chafee ETV application, the Medicaid extension, the
-          Extended Youth Support Services intake — compounds into the
-          homelessness and degree-completion statistics on the previous screen.
+          nineteen — the <Term term="chafeeETV">Chafee ETV</Term> application,
+          the <Term term="medicaidExtension">Medicaid extension</Term>, the{" "}
+          <Term term="eyss">Extended Youth Support Services</Term> intake —
+          compounds into the homelessness and degree-completion statistics on
+          the previous screen.
         </p>
         <p>
           The handbook isn&rsquo;t wrong. It&rsquo;s just the wrong shape for
