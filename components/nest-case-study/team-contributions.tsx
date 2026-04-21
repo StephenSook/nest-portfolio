@@ -69,6 +69,31 @@ export function TeamContributions() {
           </article>
         ))}
       </div>
+
+      <div className="mt-20 border-t border-white/[0.08] pt-12">
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+          With thanks to
+        </span>
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+          Nest stands on the policy work and lived-experience advocacy of the
+          organizations whose handbooks, program documents, and research we cite:
+        </p>
+        <ul className="mt-8 grid gap-x-10 gap-y-3 text-base text-foreground/85 md:grid-cols-2 md:text-lg">
+          <li>Georgia Division of Family and Children Services</li>
+          <li>Embark Georgia</li>
+          <li>Kennesaw State ASCEND</li>
+          <li>Wellroot Family Services</li>
+          <li>Child Welfare Information Gateway</li>
+          <li>Casey Family Programs</li>
+          <li>Chapin Hall at the University of Chicago</li>
+        </ul>
+        {/*
+          Advisor credits — publish only after explicit written permission:
+            • Lauren Padgett — Executive Director, CARE Services / HPW, Kennesaw State
+            • Additional advisors from Apr 2026 coalition outreach (Amon / MAAC)
+          Until then, list stays at the organizational level.
+        */}
+      </div>
     </SectionFrame>
   );
 }
