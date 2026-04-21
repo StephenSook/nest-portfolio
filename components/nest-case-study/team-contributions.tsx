@@ -93,9 +93,26 @@ export function TeamContributions() {
         {/*
           Advisor credits — publish only after explicit written permission:
             • Lauren Padgett — Executive Director, CARE Services / HPW, Kennesaw State
-            • Additional advisors from Apr 2026 coalition outreach (Amon / MAAC)
-          Until then, list stays at the organizational level.
+            • Apr 2026 coalition outreach (Amon / MAAC) — scheduled
+              May 18, 2026 feedback session convened at MAAC with
+              Emory Barton Children's Law Center, Georgia Appleseed,
+              Georgia Voices for Children, Interfaith Children's
+              Movement, and United Way.
+          Until each has given written permission, names stay gated and
+          the public copy references the coalition at the organizational
+          level only.
         */}
+      </div>
+
+      <div className="mt-16 max-w-2xl border-t border-white/[0.08] pt-12">
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+          Next &middot; Post C-Day
+        </span>
+        <p className="mt-5 text-base leading-relaxed text-muted md:text-lg">
+          Scheduled May 18, 2026: feedback session at MAAC with a Georgia
+          foster-care advocacy coalition. First time Nest meets the
+          practitioners whose policy and program work the corpus cites.
+        </p>
       </div>
 
       {stats.commits > 0 && (

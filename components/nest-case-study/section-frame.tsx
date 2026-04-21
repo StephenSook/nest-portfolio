@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SectionAnchor } from "./section-anchor";
 
 type SectionFrameProps = {
   id?: string;
@@ -28,19 +29,9 @@ export function SectionFrame({
     >
       <header className="mb-12 grid gap-10 md:grid-cols-[auto_1fr] md:gap-20">
         {id ? (
-          <a
-            href={`#${id}`}
-            aria-label={`Link to section: ${eyebrow}`}
-            className="group relative inline-flex items-baseline self-start font-mono text-[10px] uppercase tracking-[0.18em] text-subtle transition-colors hover:text-accent focus-visible:text-accent md:pt-3"
-          >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-4 text-accent opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 md:-left-5"
-            >
-              #
-            </span>
+          <SectionAnchor id={id} label={eyebrow}>
             {eyebrowLabel}
-          </a>
+          </SectionAnchor>
         ) : (
           <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle md:pt-3">
             {eyebrowLabel}
