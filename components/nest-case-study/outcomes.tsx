@@ -1,10 +1,16 @@
 import { SectionFrame } from "./section-frame";
 
+// Volume stats (what we built) paired with product-guarantee stats (what the
+// architecture enforces). When we have eval numbers from Tylin — citation
+// accuracy on a test set, p95 latency, refusal precision — we can promote
+// those in or alongside this grid.
 const facts = [
   { figure: "3", label: "engineers" },
   { figure: "12", label: "weeks end-to-end" },
-  { figure: "8", label: "onboarding steps, zero SSN required" },
   { figure: "~500", label: "verified policy passages indexed" },
+  { figure: "8", label: "onboarding steps, zero SSN required" },
+  { figure: "100%", label: "deterministic crisis routing" },
+  { figure: "0", label: "uncited claims by design" },
 ];
 
 export function Outcomes() {
@@ -27,7 +33,7 @@ export function Outcomes() {
         </p>
       </div>
 
-      <dl className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6">
+      <dl className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-6">
         {facts.map((f) => (
           <div key={f.label} className="border-t border-white/[0.08] pt-5">
             <dt className="font-serif text-5xl leading-none tabular-nums tracking-tight md:text-6xl">
