@@ -11,6 +11,10 @@ This portfolio site is the team's case study and recruiting surface. The live Ne
 - [Home](https://nest-portfolio-pi.vercel.app/): Team introduction, project teaser, and recruiter-facing summary.
 - [Nest case study](https://nest-portfolio-pi.vercel.app/nest): Long-form walkthrough of the problem, approach, RAG architecture, outcomes, individual ownership, what we'd do differently in v2, audio deep-dive, and sources.
 
+## Live product
+
+- [Nest app (production)](https://nest-zeta-nine.vercel.app): The deployed application — no install, no account. Points at the same ChromaDB corpus and Groq endpoint documented in the case study's architecture section.
+
 ## Source code
 
 - [Portfolio repo (this site)](https://github.com/StephenSook/nest-portfolio)

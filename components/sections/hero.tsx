@@ -71,7 +71,7 @@ export function Hero() {
             href="https://nest-zeta-nine.vercel.app"
             className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-medium text-background transition-colors hover:bg-amber-600"
           >
-            See the project
+            Try Nest live
             <svg
               viewBox="0 0 16 16"
               aria-hidden
