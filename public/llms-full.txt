@@ -1,0 +1,190 @@
+# Nest — A case study
+
+> How three Kennesaw State CS students replaced Georgia's 250-page foster care transition handbook with an AI navigator that onboards in two minutes. Built April 2026 for C-Day 2026 (Project UC-151–197).
+
+**Team:** Stephen Sookra (frontend, pitch) · Tylin Delaney (backend, RAG) · Brenden Bryant (design, light coding)
+**Portfolio:** https://nest-portfolio-pi.vercel.app
+**Nest application (live):** https://nest-zeta-nine.vercel.app
+**Source — portfolio:** https://github.com/StephenSook/nest-portfolio
+**Source — Nest app:** https://github.com/tylinndd/nest
+**Institution:** Kennesaw State University · College of Computing and Software Engineering
+**Event:** C-Day 2026 · April 29 · Marietta Event Center · UC-151–197
+
+---
+
+## Hero
+
+Flagship project · Live.
+
+**Nest** is an AI transition navigator for Georgia foster youth aging out of care. Two-minute intake. Ninety-day plan. Every answer cited to real policy — never hallucinated.
+
+---
+
+## 01 · The stakes
+
+- **~700** Georgia foster youth age out of state care each year (Georgia DFCS).
+- **1 in 4** will experience homelessness within twelve months (Midwest Evaluation of the Adult Functioning of Former Foster Youth — Chapin Hall, University of Chicago).
+- **<3%** will earn a four-year college degree by age 26 (Casey Family Programs · Chapin Hall).
+- **250 pages** in the DFCS handbook that is the state's main resource (Georgia DFCS — "Making the Transition").
+
+---
+
+## 02 · The problem — The resource exists. It's just unusable.
+
+Every foster youth aging out in Georgia is handed the same document: the DFCS *Making the Transition* handbook. Two hundred and fifty pages. Twenty-plus deadlines in the first ninety days after exit. No search, no personalization, no way to tell which of the programs you actually qualify for.
+
+Case managers carry forty-plus youth each. A deadline missed at nineteen — the Chafee ETV application, the Medicaid extension, the Extended Youth Support Services intake — compounds into the homelessness and degree-completion statistics on the previous screen.
+
+The handbook isn't wrong. It's just the wrong shape for someone trying to keep housing and a job and school while figuring out who to call first.
+
+---
+
+## 03 · Our approach — Replace the PDF with a conversation.
+
+Not a chatbot layered on the handbook. A product that takes the same information, orders it by what's urgent for *this* youth in *this* county, and cites every claim.
+
+**Beat I · Two-minute intake.** Eight questions about name, age, county, documents, education plan, housing, and health. Answers stay on the device. We never ask for an SSN or a case number.
+
+**Beat II · A ninety-day plan.** Ranked by urgency — coral is today, amber this month, sage is later. Every task links to a real Georgia resource with a verified date. No dead links, no placeholder text.
+
+**Beat III · Ask Navigator, cited.** A RAG chat over the Georgia policy corpus. Every answer shows its sources — Embark Georgia, KSU ASCEND, Wellroot, Child Welfare Gateway. Crisis keywords route deterministically to 988 and 211 without touching the LLM.
+
+---
+
+## 04 · The product — Eight screens. One coherent flow.
+
+1. **Step one** — eight questions, no SSN, no case number. Everything stays on the device unless the youth chooses to export it.
+2. **Confirm, then generate** — a final glance at what they told us before the plan is built.
+3. **The plan, ranked by urgency** — coral is today, amber this month, sage is later. A countdown above keeps the stakes visible.
+4. **Your path, visualized** — every milestone on the timeline from eighteen to twenty-six. Chafee ETV, Medicaid extension, housing vouchers.
+5. **Benefits, filtered** — only programs this youth actually qualifies for, scoped by county, age, and exit status.
+6. **Ask anything, see sources** — every answer grounded in a specific passage of Georgia policy, cited inline.
+7. **Crisis, one tap away** — 988 and 211, keyword-routed from chat and never processed by the LLM.
+8. **A place for the paperwork** — birth certificate, SS card, diploma, lease — named, stored, ready for the next intake form.
+
+---
+
+## 05 · The architecture — Grounded by design.
+
+Every answer comes from a retrieved passage of Georgia policy — never the model's training data. Crisis keywords bypass the LLM entirely.
+
+**Request flow:**
+
+1. USER QUESTION (e.g., "how do I get Chafee ETV?")
+2. KEYWORD CLASSIFIER (deterministic regex + phrase list)
+3. Branch:
+   - **CRISIS** → 988 / 211 · bypass, no LLM call
+   - **OTHER** → continue
+4. CHROMADB RETRIEVAL (top-k passages from the Georgia policy corpus)
+5. GROQ · LLAMA 3.3 70B (grounded generation, cites sources)
+6. CITED ANSWER (inline source links — Embark, ASCEND, Wellroot)
+
+**Principles:**
+
+- **Retrieval first.** ChromaDB holds the Georgia corpus. The LLM never generates from training memory — only from passages we've verified and dated.
+- **Cite or don't answer.** Llama 3.3 is prompted to refuse rather than speculate. Every claim links to the specific passage it came from.
+- **Crisis is deterministic.** Phrases matching a crisis list route to 988 and 211 before any model call. We never ask an LLM to triage someone's life.
+
+---
+
+## 06 · The stack — Boring choices, on purpose.
+
+Nothing novel in the infrastructure. The interesting work is upstream — in the corpus, the prompts, and the refusal to hallucinate. Everything else is load-bearing plumbing.
+
+- **Frontend:** Vite · React 19 · TypeScript — fast dev loop, no framework opinions to fight while sprinting.
+- **Styling:** Tailwind 4 · shadcn/ui · Radix — editorial typography without a design-system tax. Copy the component, own the component.
+- **State:** Zustand · localStorage — onboarding survives tab closes. A youth walking between shelters picks up where they left off.
+- **API:** FastAPI · Python 3.11 — typed endpoints, async streaming for the Groq call, pytest from day one.
+- **Retrieval:** ChromaDB · LangChain — local vector store. The Georgia corpus ships in the repo — no external service to break.
+- **Inference:** Groq · Llama 3.3 70B — sub-second responses, open weights so we can audit the prompt contract line by line.
+
+---
+
+## 07 · What shipped — From handbook to handheld.
+
+Nest is live on Vercel (nest-zeta-nine.vercel.app), open-source on GitHub under MIT, and showcased at Kennesaw State's C-Day on April 29 in UC-151–197. The corpus covers Chafee ETV, Medicaid extension, Extended Youth Support Services, housing vouchers, and twenty other Georgia-specific programs.
+
+Georgia is v1. The architecture — local retrieval, cited generation, deterministic crisis routing — generalizes to any state with a transition handbook and a nineteen-year-old trying to read it.
+
+- **3** engineers
+- **12** weeks end-to-end
+- **8** onboarding steps, zero SSN required
+- **~500** verified policy passages indexed
+
+---
+
+## 08 · Who built what — Three engineers, distinct scopes.
+
+**Stephen Sookra — Frontend · Pitch lead**
+- Built the Next.js 16 case-study site — scroll reveals, magnetic links, Lenis smooth scroll.
+- Editorial art direction — serif / mono system, satori OG cards, print stylesheet.
+- Pitch narrative and C-Day booth demo flow.
+- Accessibility pass — skip links, reduced motion, focus rings, footnote citations.
+
+**Tylin Delaney — Backend · RAG**
+- ChromaDB retrieval pipeline — chunk sizing, embedding selection, ~500 indexed passages.
+- FastAPI service wrapping Llama 3.3 on Groq — prompt templates, cite-or-refuse guardrails.
+- Georgia corpus ingestion — DFCS handbook plus partner nonprofit docs (Embark, ASCEND, Wellroot).
+- Deterministic crisis routing — keyword classifier for 988 / 211 bypass.
+
+**Brenden Bryant — Design · Light coding**
+- Brand direction — amber accent, "handbook to handheld" narrative framing.
+- Typography and color exploration — serif / sans pairing, contrast targets.
+- Design review across the case study and home page.
+- Light coding contributions — component polish and iteration.
+
+---
+
+## 09 · What we'd do differently in v2
+
+1. **No formal eval set.** We tested retrieval quality by hand against a ~40-question checklist. For v2, we'd stand up RAGAS or TruLens and track faithfulness and answer-relevance on every corpus update.
+2. **Corpus is statewide, not county-specific.** DFCS offices vary on process — intake forms, voucher timelines, case manager availability. We'd add a county layer so an Atlanta user and a Savannah user see locally accurate procedure notes.
+3. **Crisis routing is keyword-based.** Auditable and predictable, which is what we want for the 988 / 211 bypass. But it misses oblique phrasings. We'd add a small classifier running in parallel as a second signal.
+4. **Cold start is unguided.** A first-time user doesn't know what to ask a foster-care assistant. We'd scaffold onboarding with three pre-seeded question paths — Medicaid, housing, money — instead of a blank prompt.
+
+---
+
+## 10 · FAQ
+
+**Q · Is Nest open source?**
+Yes. The application is at github.com/tylinndd/nest and this portfolio at github.com/StephenSook/nest-portfolio — both MIT-licensed. Fork either one.
+
+**Q · Can I try Nest without installing it?**
+Yes. A live instance runs at nest-zeta-nine.vercel.app — no account, no install. The deployment points at the same ChromaDB corpus and Groq endpoint documented in the architecture section.
+
+**Q · Does the architecture generalize to other states?**
+Yes. The pipeline — ChromaDB retrieval, Llama 3.3 grounded generation, deterministic keyword routing for crisis — is state-agnostic. Swap the corpus and you have a Tennessee or Texas Nest. Georgia is v1 because it's where the team lives and where we had partner access.
+
+**Q · How was the Georgia corpus validated?**
+We hand-graded retrieval quality against a ~40-question test list during the twelve-week build. For v2 we would run RAGAS or TruLens on every corpus update to track faithfulness and answer-relevance quantitatively.
+
+**Q · Why Groq + Llama 3.3 instead of OpenAI?**
+Cost (Groq's pricing is near-free at our volume), latency (sub-second token streaming beats GPT-4o on our prompts), and open weights (we can audit what the model was trained on before trusting it with eligibility answers).
+
+**Q · Who owns what on this project?**
+Stephen Sookra — frontend and pitch. Tylin Delaney — RAG pipeline, FastAPI, corpus ingestion. Brenden Bryant — design direction and light coding.
+
+---
+
+## 11 · Deep dive — Twenty minutes on the thinking behind it.
+
+A conversational breakdown of the problem, the decisions, and the trade-offs — generated from this case study and then edited by hand. Produced April 2026 · 20:01. Audio: https://nest-portfolio-pi.vercel.app/audio/nest-deep-dive.mp3
+
+---
+
+## Sources
+
+1. Annual count of Georgia foster youth aging out of state care, per Georgia Division of Family and Children Services public reporting. (Georgia DFCS)
+2. Midwest Evaluation of the Adult Functioning of Former Foster Youth — the long-running outcomes study of young adults after exit from foster care. (Chapin Hall, University of Chicago — Courtney, Dworsky et al.)
+3. Post-secondary attainment data for foster care alumni, synthesized from the Midwest Study and Casey Family Programs reporting. (Casey Family Programs · Chapin Hall)
+4. "Making the Transition" — the Georgia DFCS handbook distributed to foster youth exiting state care. The primary document Nest was built to replace. (Georgia DFCS)
+
+---
+
+## Team & contact
+
+- **Stephen Sookra** — frontend, pitch lead. https://stephensookra.com · https://github.com/StephenSook · https://www.linkedin.com/in/stephen-sookra-633682339/
+- **Tylin Delaney** — backend, RAG, FastAPI. https://tylindelaney.dev · https://github.com/tylinndd · https://www.linkedin.com/in/tylin-delaney/
+- **Brenden Bryant** — design, light coding. https://www.linkedin.com/in/brenden-bryant-422464329/
+
+Kennesaw State University · College of Computing and Software Engineering · C-Day 2026, April 29, Marietta Event Center, UC-151–197.
