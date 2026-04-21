@@ -1,7 +1,10 @@
 import { MagneticLink } from "@/components/ui/magnetic-link";
+import { getLastUpdated } from "@/lib/last-updated";
 import { PrintButton } from "./print-button";
 
 export function CaseFooter() {
+  const lastUpdated = getLastUpdated();
+
   return (
     <footer className="relative mx-auto w-full max-w-6xl px-6 pb-24 pt-32 md:px-12 md:pb-32 md:pt-40">
       <div className="flex flex-col gap-20">
@@ -47,9 +50,20 @@ export function CaseFooter() {
           </div>
         </div>
 
-        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
-          Nest &middot; Georgia &middot; 2026
-        </p>
+        <div className="flex flex-col gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-subtle md:flex-row md:items-center md:justify-between">
+          <span>Nest &middot; Georgia &middot; 2026</span>
+          <span>
+            Last updated {lastUpdated.date} &middot;{" "}
+            <a
+              href={lastUpdated.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted transition-colors hover:text-accent focus-visible:text-accent"
+            >
+              {lastUpdated.shortSha}
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   );
