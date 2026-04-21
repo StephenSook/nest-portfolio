@@ -50,6 +50,17 @@ export function CaseFooter() {
           </div>
         </div>
 
+        <p className="max-w-2xl font-mono text-[10px] uppercase leading-relaxed tracking-[0.18em] text-subtle">
+          Colophon &middot; Set in{" "}
+          <span className="text-muted">Instrument Serif</span> and{" "}
+          <span className="text-muted">Geist</span>. Motion by{" "}
+          <span className="text-muted">Framer Motion</span>. Smooth scroll by{" "}
+          <span className="text-muted">Lenis</span>. Syntax by{" "}
+          <span className="text-muted">Shiki</span>. Built on{" "}
+          <span className="text-muted">Next.js</span>, deployed on{" "}
+          <span className="text-muted">Vercel</span>.
+        </p>
+
         <div className="flex flex-col gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-subtle md:flex-row md:items-center md:justify-between">
           <span>Nest &middot; Georgia &middot; 2026</span>
           <span>
