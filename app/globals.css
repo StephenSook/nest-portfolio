@@ -42,6 +42,20 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:where(section[id]) {
+  scroll-margin-top: 2rem;
+}
+
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-background);
