@@ -53,7 +53,7 @@ export function CaseHero() {
           variants={item}
           className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent"
         >
-          Flagship project · Live
+          Flagship project · Live · 18 min read
         </motion.span>
 
         <motion.h1
