@@ -7,6 +7,7 @@ import { Problem } from "@/components/nest-case-study/problem";
 import { Approach } from "@/components/nest-case-study/approach";
 import { ScreenGallery } from "@/components/nest-case-study/screen-gallery";
 import { ArchitectureDiagram } from "@/components/nest-case-study/architecture-diagram";
+import { CodeSpotlight } from "@/components/nest-case-study/code-spotlight";
 import { StackRationale } from "@/components/nest-case-study/stack-rationale";
 import { Outcomes } from "@/components/nest-case-study/outcomes";
 import { TeamContributions } from "@/components/nest-case-study/team-contributions";
@@ -139,6 +140,7 @@ export default function NestCaseStudy() {
       <Approach />
       <ScreenGallery />
       <ArchitectureDiagram />
+      <CodeSpotlight />
       <StackRationale />
       <Outcomes />
       <TeamContributions />
