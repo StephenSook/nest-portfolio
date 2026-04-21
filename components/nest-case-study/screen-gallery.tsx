@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { PhoneFrame } from "./phone-frame";
+import { ScreenZoom } from "./screen-zoom";
 import { SectionFrame } from "./section-frame";
 
 const EASE = [0.2, 0.8, 0.2, 1] as const;
@@ -81,9 +82,10 @@ type CaptionProps = {
   screen: Screen;
   index: number;
   onEnter: (id: string) => void;
+  onZoom: (id: string) => void;
 };
 
-function Caption({ screen, index, onEnter }: CaptionProps) {
+function Caption({ screen, index, onEnter, onZoom }: CaptionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.5 });
 
@@ -107,7 +109,14 @@ function Caption({ screen, index, onEnter }: CaptionProps) {
       </p>
 
       <div className="mt-10 md:hidden">
-        <PhoneFrame src={screen.src} alt={screen.alt} />
+        <button
+          type="button"
+          onClick={() => onZoom(screen.id)}
+          aria-label={`Zoom screenshot — ${screen.title}`}
+          className="block w-full rounded-[2rem] transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:opacity-80"
+        >
+          <PhoneFrame src={screen.src} alt={screen.alt} />
+        </button>
       </div>
     </div>
   );
@@ -115,6 +124,7 @@ function Caption({ screen, index, onEnter }: CaptionProps) {
 
 export function ScreenGallery() {
   const [activeId, setActiveId] = useState<string>(screens[0].id);
+  const [zoomId, setZoomId] = useState<string | null>(null);
 
   return (
     <SectionFrame id="gallery" number="04" eyebrow="The product">
@@ -123,41 +133,66 @@ export function ScreenGallery() {
       </h2>
       <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
         Scroll the experience the way a youth aging out would encounter it — from the first
-        question to the final vault.
+        question to the final vault.{" "}
+        <span className="text-subtle">Tap any screen to zoom.</span>
       </p>
 
       <div className="mt-20 grid gap-12 md:grid-cols-2 md:gap-20">
         <div className="relative hidden md:block">
           <div className="sticky top-20">
-            <PhoneFrame>
-              {screens.map((s, i) => (
-                <motion.div
-                  key={s.id}
-                  initial={false}
-                  animate={{ opacity: activeId === s.id ? 1 : 0 }}
-                  transition={{ duration: 0.5, ease: EASE }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={s.src}
-                    alt={s.alt}
-                    fill
-                    sizes="320px"
-                    className="object-cover"
-                    priority={i === 0}
-                  />
-                </motion.div>
-              ))}
-            </PhoneFrame>
+            <button
+              type="button"
+              onClick={() => setZoomId(activeId)}
+              aria-label="Zoom current screenshot"
+              className="block w-full rounded-[2rem] transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent hover:opacity-95"
+            >
+              <PhoneFrame>
+                {screens.map((s, i) => (
+                  <motion.div
+                    key={s.id}
+                    initial={false}
+                    animate={{ opacity: activeId === s.id ? 1 : 0 }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={s.src}
+                      alt={s.alt}
+                      fill
+                      sizes="320px"
+                      className="object-cover"
+                      priority={i === 0}
+                    />
+                  </motion.div>
+                ))}
+              </PhoneFrame>
+            </button>
+            <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
+              Tap to zoom
+            </p>
           </div>
         </div>
 
         <div className="flex flex-col">
           {screens.map((s, i) => (
-            <Caption key={s.id} screen={s} index={i} onEnter={setActiveId} />
+            <Caption
+              key={s.id}
+              screen={s}
+              index={i}
+              onEnter={setActiveId}
+              onZoom={setZoomId}
+            />
           ))}
         </div>
       </div>
+
+      {zoomId && (
+        <ScreenZoom
+          screens={screens}
+          initialId={zoomId}
+          onClose={() => setZoomId(null)}
+        />
+      )}
     </SectionFrame>
   );
 }
