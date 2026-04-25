@@ -18,7 +18,7 @@ type NodeDef = {
 
 const nodes: NodeDef[] = [
   { id: "user", x: 200, y: 10, w: 200, h: 60, label: "USER QUESTION", hint: "e.g., \u201chow do I get Chafee ETV?\u201d" },
-  { id: "classifier", x: 180, y: 120, w: 240, h: 60, label: "KEYWORD CLASSIFIER", hint: "deterministic · regex + phrase list" },
+  { id: "classifier", x: 180, y: 120, w: 240, h: 60, label: "KEYWORD CLASSIFIER", hint: "deterministic · keyword phrase list" },
   { id: "crisis", x: 20, y: 260, w: 220, h: 80, label: "988 / 211", hint: "crisis bypass · no LLM call" },
   { id: "retrieval", x: 360, y: 260, w: 220, h: 80, label: "CHROMADB RETRIEVAL", hint: ["top-k passages", "Georgia policy corpus"] },
   { id: "llm", x: 360, y: 380, w: 220, h: 80, label: "GROQ · LLAMA 3.3 70B", hint: "grounded generation · cites sources" },
