@@ -133,7 +133,7 @@ const softwareAppJsonLd = {
     "Retrieval-augmented answers cited to Georgia DFCS policy",
     "Deterministic crisis routing to 988 and 211",
     "Two-minute intake generating a ninety-day transition plan",
-    "Refusal sentinel — the model never speculates past the corpus",
+    "Cite-or-refuse guardrail — the model never speculates past the corpus",
   ],
   author: articleJsonLd.author,
   publisher: articleJsonLd.publisher,

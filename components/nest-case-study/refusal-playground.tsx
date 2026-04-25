@@ -99,8 +99,9 @@ export function RefusalPlayground() {
       <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted md:text-base">
         A scripted reproduction of the branching logic &mdash; not the full
         classifier. Crisis phrasing routes to 988 / 211. Foster-care keywords
-        resolve to a cited passage. Everything else refuses with the production
-        sentinel&rsquo;s exact string.
+        resolve to a cited passage. Everything else returns the production
+        refusal phrase &mdash; substring-matched in the backend to catch
+        paraphrases.
       </p>
 
       <form onSubmit={onSubmit} className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -218,15 +219,15 @@ export function RefusalPlayground() {
               Branch 03 &middot; Refusal &middot; no passage matched
             </span>
             <p className="mt-3 font-mono text-sm leading-relaxed text-foreground/90 md:text-base">
-              I can&rsquo;t answer that from the Georgia foster-care corpus I was
-              given. Try rephrasing, or ask about Medicaid, Chafee ETV, housing
-              vouchers, or Independent Living.
+              I don&rsquo;t have that specific information. Please call 211
+              Georgia: dial 2-1-1.
             </p>
             <p className="mt-4 text-xs leading-relaxed text-muted">
-              The production sentinel is instructed to return a refusal like
-              this whenever retrieval similarity falls below threshold. The
-              invariant is &ldquo;cite the corpus or refuse&rdquo; &mdash; no
-              hallucinated fallback.
+              The literal production refusal phrase. The post-LLM guardrail
+              substring-matches on &ldquo;I don&rsquo;t have that specific
+              information&rdquo; to catch paraphrased refusals &mdash; the
+              phrase is both the user-facing message and the detection token,
+              by design.
             </p>
           </div>
         )}
