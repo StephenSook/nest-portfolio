@@ -37,19 +37,19 @@ const QUESTIONS: Question[] = [
     q: "How do I keep my Medicaid when I age out?",
     short: "How do I keep my Medicaid?",
     a: "You\u2019re automatically enrolled in Georgia\u2019s Former Foster Care Medicaid through your 26th birthday if you were in state custody on your 18th birthday. No reapplication \u2014 but report address changes to Georgia Gateway within 10 days, or coverage can pause.",
-    source: "DFCS Handbook \u00a7 4.3 \u2014 Medicaid Former Foster Care",
+    source: "DFCS Policy 19.8 \u2014 Medicaid for Former Foster Care Youth",
   },
   {
     q: "How do I apply for Chafee ETV?",
     short: "How do I apply for Chafee ETV?",
     a: "The Education and Training Voucher gives up to $5,000 per academic year for post-secondary tuition, books, and living costs. Apply through Embark Georgia \u2014 you\u2019ll need proof of foster care status from your DFCS case manager and a current school enrollment letter.",
-    source: "DFCS Handbook \u00a7 6.1 \u2014 Chafee ETV \u00b7 Embark Georgia",
+    source: "DFCS Policy 14.3 \u2014 Chafee ETV \u00b7 Embark Georgia",
   },
   {
     q: "Where do I find housing as I age out?",
     short: "Where do I find housing?",
     a: "Georgia\u2019s Extended Youth Support Services pays for housing, utilities, and a monthly stipend through age 23 if you sign a voluntary agreement before turning 21. Talk to your case manager 90 days before your 18th birthday \u2014 waiting past 21 closes the door permanently.",
-    source: "DFCS Handbook \u00a7 5.2 \u2014 Extended Youth Support Services",
+    source: "DFCS \u00b7 Extended Youth Support Services",
   },
 ];
 
