@@ -68,16 +68,17 @@ export async function CodeSpotlight() {
           </div>
 
           <p className="mt-12 font-mono text-[10px] uppercase tracking-[0.18em] text-subtle">
-            Simplified from Tylin&rsquo;s repo &middot; see the{" "}
+            Verbatim from Tylin&rsquo;s repo &middot; minor boilerplate trimmed
+            for readability. See the{" "}
             <a
-              href="https://github.com/StephenSook/nest-portfolio"
+              href="https://github.com/tylinndd/nest"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted underline decoration-white/20 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
             >
-              GitHub repository
+              production source
             </a>{" "}
-            for production source.
+            on GitHub.
           </p>
 
           <RefusalPlayground />
